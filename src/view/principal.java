@@ -12,7 +12,7 @@ public class principal {
 		String PID = "";
 		int op=0;
 		while(op!=99){
-			op=Integer.parseInt(JOptionPane.showInputDialog("Cadastro\n1 - listar os processosativos"
+			op=Integer.parseInt(JOptionPane.showInputDialog("Cadastro\n1 - listar os processos ativos"
 																  + "\n2 - Matar processo por PID" 
 														 		  + "\n3 - Matar processo por Nome" 
 														 		  + "\n99 - Sair"));
