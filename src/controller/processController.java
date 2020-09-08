@@ -9,26 +9,26 @@ import java.io.InputStreamReader;
 
 public class processController {
 	
-	
+	//Constructor;
 	public processController() {
 		super();
 	}
 	
-	public String os() {
+	public String os() {//pega nome do SO
 		String os = System.getProperty("os.name");
 		return os;
 	
 	}
 	
-	public void processAtivo () {
+	public void processAtivo () {//Lista processos ativos
 		String listaProcessos = "";
 		String os = os();
-		
+		//escoher comando para qual SO esta usando 
 		if (os.contains("Windows")) {
 			  listaProcessos = "TASKLIST /FO TABLE";
 		  }
 		  else if (os.contains("Linux")) {
-			  listaProcessos = "ipconfig";
+			  listaProcessos = "top";
 		  }
 	    try {
 			Process ip = Runtime.getRuntime().exec(listaProcessos);
@@ -50,16 +50,16 @@ public class processController {
 		}
 	}
 	
-	
+	//encerra processo por PID
 	public void matarPID(String PID) {
 		String ComandoPID = "";
 		String os = os();
-	    
+		//escoher comando para qual SO esta usando
 		if (os.contains("Windows")) {
 			ComandoPID = "TASKKILL /PID ";
 		  }
 		  else if (os.contains("Linux")) {
-			  ComandoPID = "ipconfig";
+			  ComandoPID = "Kill ";
 		  } 
 		ComandoPID+= PID;
 	try {
@@ -70,22 +70,18 @@ public class processController {
 	}
 		
 	}
-	
+	//encerra processo por nome
 	public void matarNome(String Nome) {
 		String ComandoNome = "";
 		String os = os();
+		//escoher comando para qual SO esta usando
 		if (os.contains("Windows")) {
-			ComandoNome = "TASKKILL /PID";
+			ComandoNome = "TASKKILL /IM";
 		  }
 		  else if (os.contains("Linux")) {
-			  ComandoNome = "ipconfig";
+			  ComandoNome = "pkill ";
 		  }
-		if (os.contains("Windows")) {
-			ComandoNome = "TASKKILL /PID ";
-		  }
-		  else if (os.contains("Linux")) {
-			  ComandoNome = "ipconfig";
-		  } 
+		
 		ComandoNome+= Nome;
 	try {
 		Runtime.getRuntime().exec(ComandoNome);
